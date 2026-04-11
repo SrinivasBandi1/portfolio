@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Srinivas Bandi — AI Automation & QA Engineering</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Epilogue:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#06060a;--ink2:#0e0e16;--ink3:#17172a;--line:rgba(255,255,255,0.06);--line2:rgba(255,255,255,0.12);--gold:#e8c46a;--gold2:#f0d896;--ice:#a8d4e6;--ice2:#d0eaf6;--neon:#00ffa3;--text:#ececf4;--mid:#8888a4;--dim:#44445a;--danger:#ff5566;--ff-d:'Bebas Neue',sans-serif;--ff-b:'Epilogue',sans-serif;--ff-m:'JetBrains Mono',monospace;}
+*{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}
+body{background:var(--ink);color:var(--text);font-family:var(--ff-b);overflow-x:hidden;cursor:none;}
+::-webkit-scrollbar{width:3px;}::-webkit-scrollbar-track{background:var(--ink);}::-webkit-scrollbar-thumb{background:var(--gold);}
+#cur{position:fixed;width:10px;height:10px;background:var(--gold);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:transform .15s;mix-blend-mode:difference;}
+#cur2{position:fixed;width:36px;height:36px;border:1px solid rgba(232,196,106,0.35);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:all .18s cubic-bezier(.25,.8,.25,1);}
+nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:22px 56px;display:flex;align-items:center;justify-content:space-between;transition:all .3s;}
+nav.sc{background:rgba(6,6,10,0.88);backdrop-filter:blur(24px);border-bottom:1px solid var(--line);}
+.nid{font-family:var(--ff-m);font-size:11px;letter-spacing:.35em;color:var(--gold);text-decoration:none;}
+.nlinks{display:flex;gap:40px;list-style:none;}
+.nlinks a{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--mid);text-decoration:none;transition:color .2s;font-family:var(--ff-m);}
+.nlinks a:hover{color:var(--text);}
+.nhire{font-family:var(--ff-m);font-size:11px;letter-spacing:.15em;padding:9px 22px;background:transparent;border:1px solid var(--gold);color:var(--gold);border-radius:2px;cursor:none;transition:all .2s;text-decoration:none;}
+.nhire:hover{background:var(--gold);color:var(--ink);}
+/* HERO */
+#hero{min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;padding:0 56px 80px;position:relative;overflow:hidden;}
+.hbg{position:absolute;inset:0;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:80px 80px;opacity:.4;}
+.hbg2{position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 60% 40%,rgba(14,14,22,0) 0%,var(--ink) 75%);}
+.orb{position:absolute;border-radius:50%;filter:blur(100px);pointer-events:none;}
+.o1{width:500px;height:500px;background:rgba(232,196,106,0.08);top:-100px;right:80px;animation:d1 12s ease-in-out infinite;}
+.o2{width:350px;height:350px;background:rgba(0,255,163,0.05);bottom:100px;left:-80px;animation:d2 15s ease-in-out infinite;}
+@keyframes d1{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-40px,30px) scale(1.1)}}
+@keyframes d2{0%,100%{transform:translate(0,0)}50%{transform:translate(30px,-20px)}}
+.hey{font-family:var(--ff-m);font-size:11px;letter-spacing:.4em;color:var(--neon);text-transform:uppercase;margin-bottom:28px;display:flex;align-items:center;gap:16px;position:relative;z-index:2;}
+.hey::before{content:'';width:32px;height:1px;background:var(--neon);}
+.hname{
+  font-family:var(--ff-d);
+  font-size:clamp(70px,11vw,158px);
+  line-height:.92;
+  letter-spacing:.04em;
+  color:var(--text);
+  position:relative;
+  z-index:2;
+  margin-bottom:24px;
+  text-transform:uppercase;
+}
+.hname .l2{
+  color:transparent;
+  -webkit-text-stroke:1px rgba(232,196,106,0.9);
+  display:inline-block;
+  margin-left:18px;
+}
+.hsub{position:relative;z-index:2;height:26px;overflow:hidden;margin-bottom:36px;}
+.htrack{display:flex;flex-direction:column;animation:roll 9s ease-in-out infinite;}
+.hitem{font-family:var(--ff-m);font-size:12px;letter-spacing:.25em;color:var(--gold);text-transform:uppercase;height:26px;display:flex;align-items:center;flex-shrink:0;}
+@keyframes roll{0%,18%{transform:translateY(0)}22%,38%{transform:translateY(-26px)}42%,58%{transform:translateY(-52px)}62%,78%{transform:translateY(-78px)}82%,100%{transform:translateY(-104px)}}
+.hdesc{font-size:15px;line-height:1.85;color:rgba(236,236,244,.55);max-width:540px;position:relative;z-index:2;margin-bottom:44px;}
+.hact{display:flex;gap:16px;position:relative;z-index:2;margin-bottom:64px;flex-wrap:wrap;}
+.bg{padding:14px 36px;background:var(--gold);color:var(--ink);border:none;border-radius:2px;font-family:var(--ff-b);font-size:13px;font-weight:700;letter-spacing:.06em;cursor:none;transition:all .2s;text-decoration:none;}
+.bg:hover{background:var(--gold2);}
+.bgh{padding:14px 36px;background:transparent;color:var(--text);border:1px solid var(--line2);border-radius:2px;font-family:var(--ff-b);font-size:13px;font-weight:600;letter-spacing:.06em;cursor:none;transition:all .2s;text-decoration:none;}
+.bgh:hover{border-color:var(--mid);}
+.hmet{display:flex;gap:56px;position:relative;z-index:2;padding-top:32px;border-top:1px solid var(--line);}
+.hmi{display:flex;flex-direction:column;gap:4px;}
+.hmv{font-family:var(--ff-d);font-size:42px;color:var(--text);letter-spacing:.02em;}
+.hmv span{font-size:24px;color:var(--gold);}
+.hml{font-family:var(--ff-m);font-size:10px;letter-spacing:.25em;text-transform:uppercase;color:var(--mid);}
+.hpanel{position:absolute;right:56px;top:50%;transform:translateY(-50%);z-index:2;display:flex;flex-direction:column;gap:1px;width:300px;}
+.hpr{background:rgba(14,14,22,.7);backdrop-filter:blur(12px);border:1px solid var(--line);padding:16px 20px;display:flex;align-items:center;justify-content:space-between;transition:border-color .2s;}
+.hpr:hover{border-color:rgba(232,196,106,.2);}
+.hpl{font-family:var(--ff-m);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--mid);}
+.hpv{font-size:12px;font-family:var(--ff-m);color:var(--text);}
+.dot{width:6px;height:6px;border-radius:50%;background:var(--neon);animation:pulse 2s ease-in-out infinite;}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.8)}}
+/* TICKER */
+.ticker{padding:18px 0;background:var(--ink2);border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden;}
+.ttrack{display:flex;gap:56px;animation:tick 28s linear infinite;width:max-content;}
+.ti{
+  font-family:var(--ff-m);
+  font-size:11px;
+  letter-spacing:.25em;
+  color:var(--ice2);
+  text-transform:uppercase;
+  white-space:nowrap;
+  display:flex;
+  align-items:center;
+  gap:20px;
+  opacity:.92;
+}
+.ti::after{content:'◆';font-size:6px;color:var(--gold);opacity:.6;}
+@keyframes tick{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+/* SHARED */
+.sec{padding:110px 56px;max-width:1440px;margin:0 auto;}
+.sw{padding:110px 56px;}
+.sl{font-family:var(--ff-m);font-size:10px;letter-spacing:.45em;text-transform:uppercase;color:var(--gold);margin-bottom:14px;display:flex;align-items:center;gap:14px;}
+.sl::before{content:'';width:24px;height:1px;background:var(--gold);}
+.sh{font-family:var(--ff-d);font-size:clamp(36px,5vw,68px);line-height:.98;letter-spacing:.03em;margin-bottom:20px;}
+.sd{font-size:15px;line-height:1.85;color:var(--mid);max-width:580px;}
+hr.dv{border:none;border-top:1px solid var(--line);margin:0;}
+.fu{opacity:0;transform:translateY(28px);transition:opacity .65s ease,transform .65s ease;}
+.fu.in{opacity:1;transform:none;}
+/* ABOUT */
+#about{display:grid;grid-template-columns:1fr 1fr;gap:96px;align-items:start;padding:110px 56px;}
+.ab p{font-size:15px;line-height:1.9;color:rgba(236,236,244,.65);margin-bottom:22px;}
+.ab p strong{color:var(--text);}
+.ab p em{font-style:italic;color:var(--ice);}
+.pq{margin-top:36px;padding:28px 32px;border-left:2px solid var(--gold);background:rgba(232,196,106,.04);}
+.pq p{font-size:14px;line-height:1.85;color:var(--mid);}
+.pq p strong{color:var(--gold);}
+.asd{display:flex;flex-direction:column;gap:18px;}
+.ac{background:var(--ink2);border:1px solid var(--line);padding:22px 24px;border-radius:3px;transition:border-color .2s;}
+.ac:hover{border-color:rgba(232,196,106,.2);}
+.acl{font-family:var(--ff-m);font-size:9px;letter-spacing:.3em;text-transform:uppercase;color:var(--dim);margin-bottom:8px;}
+.acv{font-size:13px;color:var(--text);line-height:1.6;}
+.dts{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px;}
+.dt{font-size:11px;padding:4px 12px;background:rgba(255,255,255,.03);border:1px solid var(--line);color:var(--mid);border-radius:1px;}
+/* AI VISION */
+.aw{background:var(--ink2);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+.ai{padding:110px 56px;max-width:1440px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
+.ap{display:inline-flex;align-items:center;gap:10px;padding:8px 16px;background:rgba(0,255,163,.08);border:1px solid rgba(0,255,163,.2);border-radius:2px;font-family:var(--ff-m);font-size:11px;letter-spacing:.2em;color:var(--neon);text-transform:uppercase;width:fit-content;}
+.ap::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--neon);animation:pulse 1.8s infinite;}
+.afs{display:flex;flex-direction:column;gap:12px;margin-top:8px;}
+.af{display:flex;align-items:flex-start;gap:14px;padding:18px 20px;background:rgba(0,255,163,.03);border:1px solid rgba(0,255,163,.1);border-radius:3px;transition:all .2s;}
+.af:hover{background:rgba(0,255,163,.06);border-color:rgba(0,255,163,.2);}
+.afi{font-size:20px;flex-shrink:0;margin-top:1px;}
+.aft{font-size:13px;font-weight:700;margin-bottom:4px;color:var(--text);}
+.afd{font-size:12px;line-height:1.65;color:var(--mid);}
+/* EXPERTISE */
+.eg{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);margin-top:64px;border:1px solid var(--line);overflow:hidden;}
+.ec{background:var(--ink2);padding:36px 30px;position:relative;transition:background .25s;overflow:hidden;}
+.ec:hover{background:var(--ink3);}
+.ec::before{content:'';position:absolute;left:0;bottom:0;width:0;height:1px;background:var(--gold);transition:width .35s;}
+.ec:hover::before{width:100%;}
+.eci{font-size:26px;margin-bottom:18px;}
+.ect{font-size:15px;font-weight:700;margin-bottom:8px;}
+.ecd{font-size:12px;line-height:1.75;color:var(--mid);}
+.ectools{display:flex;flex-wrap:wrap;gap:6px;margin-top:16px;}
+.ecto{font-family:var(--ff-m);font-size:9px;letter-spacing:.15em;color:var(--gold);text-transform:uppercase;}
+/* SKILLS */
+#skills{padding:110px 56px;max-width:1440px;margin:0 auto;}
+.skc{display:grid;grid-template-columns:1fr 1fr;gap:72px;margin-top:64px;}
+.skg{font-family:var(--ff-m);font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--dim);padding-bottom:14px;border-bottom:1px solid var(--line);margin-bottom:24px;}
+.ski{margin-bottom:22px;}
+.skr{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px;}
+.skn{font-size:13px;font-weight:600;}
+.skt{font-family:var(--ff-m);font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:var(--mid);}
+.skb{height:2px;background:rgba(255,255,255,.05);border-radius:1px;}
+.skf{height:100%;border-radius:1px;transform-origin:left;transform:scaleX(0);transition:transform 1.1s cubic-bezier(.4,0,.2,1);}
+.fg{background:linear-gradient(90deg,var(--gold),var(--gold2));}
+.fi{background:linear-gradient(90deg,var(--ice),var(--ice2));}
+.fd{background:linear-gradient(90deg,var(--dim),#6666aa);}
+/* METRICS */
+.mw{background:var(--ink2);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+.mi{padding:90px 56px;max-width:1440px;margin:0 auto;}
+.mgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);margin-top:56px;}
+.mc{background:var(--ink2);padding:40px 32px;position:relative;overflow:hidden;}
+.mc::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .4s;}
+.mc:hover::after{transform:scaleX(1);}
+.mn{font-family:var(--ff-d);font-size:56px;line-height:1;color:var(--text);letter-spacing:.03em;}
+.mn sup{font-size:28px;color:var(--gold);}
+.ml{font-family:var(--ff-m);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--mid);margin-top:8px;line-height:1.6;}
+/* DOMAINS */
+#domains{padding:110px 56px;}
+.dg{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:64px;}
+.dc{background:var(--ink2);border:1px solid var(--line);padding:38px 32px;border-radius:3px;position:relative;overflow:hidden;transition:border-color .25s,transform .25s;}
+.dc:hover{border-color:rgba(168,212,230,.2);transform:translateY(-3px);}
+.dc::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--ice),transparent);opacity:0;transition:opacity .3s;}
+.dc:hover::before{opacity:1;}
+.dn{font-family:var(--ff-m);font-size:10px;letter-spacing:.3em;color:var(--dim);margin-bottom:18px;}
+.dt2{font-family:var(--ff-d);font-size:28px;letter-spacing:.03em;margin-bottom:20px;}
+.ds{margin-bottom:18px;}
+.dl{font-family:var(--ff-m);font-size:9px;letter-spacing:.3em;text-transform:uppercase;margin-bottom:5px;}
+.lr{color:var(--danger);}.lb{color:var(--ice);}.lg{color:var(--neon);}
+.dtx{font-size:12px;line-height:1.75;color:var(--mid);}
+.dm{margin-top:22px;padding-top:20px;border-top:1px solid var(--line);}
+.dmv{font-family:var(--ff-d);font-size:32px;color:var(--text);letter-spacing:.02em;}
+.dml{font-size:10px;font-family:var(--ff-m);letter-spacing:.15em;text-transform:uppercase;color:var(--dim);margin-top:3px;}
+/* CAPABILITIES */
+.cpw{background:var(--ink2);border-top:1px solid var(--line);}
+.cpi{padding:110px 56px;max-width:1440px;margin:0 auto;}
+.cpg{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:64px;}
+.cpc{background:var(--ink);border:1px solid var(--line);padding:28px 22px;border-radius:3px;text-align:center;transition:all .25s;}
+.cpc:hover{border-color:rgba(232,196,106,.2);background:rgba(232,196,106,.02);}
+.cpi2{font-size:28px;margin-bottom:14px;}
+.cpt{font-size:13px;font-weight:700;margin-bottom:8px;}
+.cpd{font-size:11px;line-height:1.7;color:var(--mid);}
+/* CONTACT */
+#contact{padding:110px 56px;max-width:1440px;margin:0 auto;}
+.ctg{display:grid;grid-template-columns:1fr 1.5fr;gap:96px;margin-top:64px;}
+.ch{font-family:var(--ff-d);font-size:clamp(28px,4vw,52px);line-height:1;letter-spacing:.03em;margin-bottom:20px;}
+.ch em{font-family:'Epilogue',sans-serif;font-style:italic;font-size:.55em;color:var(--mid);display:block;margin-bottom:6px;letter-spacing:0;}
+.csub{font-size:14px;line-height:1.85;color:var(--mid);margin-bottom:36px;}
+.cl{display:flex;align-items:center;gap:14px;padding:15px 18px;background:var(--ink2);border:1px solid var(--line);text-decoration:none;color:var(--text);transition:all .2s;margin-bottom:12px;border-radius:2px;}
+.cl:hover{border-color:rgba(232,196,106,.3);background:rgba(232,196,106,.03);}
+.cli{width:34px;height:34px;border-radius:3px;display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0;}
+.clgh{background:rgba(255,255,255,.06);}.clli{background:rgba(0,119,181,.15);}.clem{background:rgba(0,255,163,.1);}
+.clt{display:flex;flex-direction:column;gap:2px;}
+.clc{font-family:var(--ff-m);font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--dim);}
+.cln{font-size:13px;font-weight:600;}
+.fs{background:var(--ink2);border:1px solid var(--line);padding:44px 40px;border-radius:4px;position:relative;}
+.fs::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);}
+.fg2{display:flex;flex-direction:column;gap:8px;margin-bottom:18px;}
+.fl2{font-family:var(--ff-m);font-size:9px;letter-spacing:.3em;text-transform:uppercase;color:var(--mid);}
+.fi2,.ft2{background:var(--ink);border:1px solid var(--line);border-radius:2px;padding:12px 16px;color:var(--text);font-family:var(--ff-b);font-size:13px;outline:none;transition:border-color .2s;width:100%;}
+.fi2:focus,.ft2:focus{border-color:rgba(232,196,106,.4);}
+.fi2.er,.ft2.er{border-color:var(--danger);}
+.fi2::placeholder,.ft2::placeholder{color:rgba(136,136,164,.4);}
+.ft2{resize:vertical;min-height:110px;}
+.fr{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.em{font-family:var(--ff-m);font-size:9px;letter-spacing:.1em;color:var(--danger);}
+.bs{width:100%;padding:15px;background:var(--gold);color:var(--ink);border:none;border-radius:2px;font-family:var(--ff-b);font-size:13px;font-weight:700;letter-spacing:.06em;cursor:none;transition:all .2s;}
+.bs:hover{background:var(--gold2);}
+.bs:disabled{opacity:.4;}
+.fsu{text-align:center;padding:44px 20px;display:none;flex-direction:column;gap:12px;align-items:center;}
+.fsu.sh2{display:flex;}
+.fsi{font-size:44px;}
+.fst{font-family:var(--ff-d);font-size:28px;letter-spacing:.04em;}
+.fss{font-size:13px;color:var(--mid);}
+.fe{background:rgba(255,85,102,.08);border:1px solid rgba(255,85,102,.25);border-radius:3px;padding:12px 16px;font-size:12px;color:var(--danger);margin-bottom:16px;display:none;}
+.fe.sh2{display:block;}
+footer{padding:36px 56px;border-top:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;}
+.ftb{font-family:var(--ff-d);font-size:20px;letter-spacing:.05em;color:var(--dim);}
+.ftlinks{display:flex;gap:28px;}
+.ftl{font-family:var(--ff-m);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--dim);text-decoration:none;transition:color .2s;}
+.ftl:hover{color:var(--text);}
+.ftc{font-family:var(--ff-m);font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:rgba(68,68,90,.5);}
+@media(max-width:1024px){
+  .hpanel{display:none;}
+  #hero{padding:80px 32px 64px;}
+  nav{padding:18px 32px;}
+  .sec,.sw{padding:80px 32px;}
+  #about,.ai,.ctg{grid-template-columns:1fr;gap:48px;padding:80px 32px;}
+  .skc{grid-template-columns:1fr;gap:40px;}
+  .eg{grid-template-columns:1fr 1fr;}
+  .mgrid,.cpg{grid-template-columns:1fr 1fr;}
+  .dg{grid-template-columns:1fr;}
+  footer{flex-direction:column;gap:16px;padding:28px 32px;text-align:center;}
+  .mi{padding:80px 32px;}
+  .cpi{padding:80px 32px;}
+  #skills,#domains,#contact{padding:80px 32px;}
+}
+@media(max-width:600px){
+  nav .nlinks{display:none;}
+  .hname{font-size:60px;}
+  .fr{grid-template-columns:1fr;}
+  .eg{grid-template-columns:1fr;}
+  .mgrid{grid-template-columns:1fr 1fr;}
+  .cpg{grid-template-columns:1fr 1fr;}
+  .hmet{gap:24px;}
+}
+</style>
+</head>
+<body>
+<div id="cur"></div><div id="cur2"></div>
+
+<nav id="mn">
+  <a href="#hero" class="nid">SB</a>
+  <ul class="nlinks">
+    <li><a href="#about">About</a></li>
+    <li><a href="#vision">AI Vision</a></li>
+    <li><a href="#expertise">Expertise</a></li>
+    <li><a href="#domains">Domains</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nhire">Hire Me</a>
+</nav>
+
+<section id="hero">
+  <div class="hbg"></div><div class="hbg2"></div>
+  <div class="orb o1"></div><div class="orb o2"></div>
+  <div class="hpanel">
+    <div class="hpr"><span class="hpl">Status</span><span style="display:flex;align-items:center;gap:8px;"><div class="dot"></div><span class="hpv" style="color:var(--neon)">Open to opportunities</span></span></div>
+    <div class="hpr"><span class="hpl">Focus</span><span class="hpv">AI Automation</span></div>
+    <div class="hpr"><span class="hpl">Stack</span><span class="hpv">Playwright · Appium · Python</span></div>
+    <div class="hpr"><span class="hpl">Domains</span><span class="hpv">Healthcare · EdTech · Insurance</span></div>
+    <div class="hpr"><span class="hpl">Methodology</span><span class="hpv">Agile · Scrum</span></div>
+  </div>
+
+  <div class="hey">AI-Driven QA Engineering</div>
+  <h1 class="hname">SRINIVAS <span class="l2">BANDI</span></h1>
+  <div class="hsub">
+    <div class="htrack">
+      <div class="hitem">Engineering Intelligent Test Systems</div>
+      <div class="hitem">Building Autonomous Quality at Scale</div>
+      <div class="hitem">AI-Driven Automation Architecture</div>
+      <div class="hitem">Quality Engineering with Intelligence</div>
+      <div class="hitem">Engineering Intelligent Test Systems</div>
+    </div>
+  </div>
+  <p class="hdesc">I build automation frameworks that don't just run tests — they reason about quality. From web and mobile to APIs and real-time performance, I architect systems that give engineering teams confidence at scale.</p>
+  <div class="hact">
+    <a href="#domains" class="bg">View Work</a>
+    <a href="#contact" class="bgh">Get in Touch</a>
+  </div>
+  <div class="hmet">
+    <div class="hmi"><div class="hmv">500<span>+</span></div><div class="hml">Web Test Cases</div></div>
+    <div class="hmi"><div class="hmv">500<span>+</span></div><div class="hml">Mobile Test Cases</div></div>
+    <div class="hmi"><div class="hmv">100<span>+</span></div><div class="hml">API Test Cases</div></div>
+    <div class="hmi"><div class="hmv">3</div><div class="hml">Production Domains</div></div>
+  </div>
+</section>
+
+<div class="ticker"><div class="ttrack">
+  <span class="ti">Selenium</span><span class="ti">Playwright</span><span class="ti">Appium</span><span class="ti">RestAssured</span><span class="ti">JMeter</span><span class="ti">Python</span><span class="ti">Mobile Automation</span><span class="ti">API Testing</span><span class="ti">CI/CD</span><span class="ti">Performance Engineering</span><span class="ti">LiveKit</span><span class="ti">Healthcare QA</span><span class="ti">AI Automation</span><span class="ti">Framework Architecture</span><span class="ti">Agile</span>
+  <span class="ti">Selenium</span><span class="ti">Playwright</span><span class="ti">Appium</span><span class="ti">RestAssured</span><span class="ti">JMeter</span><span class="ti">Python</span><span class="ti">Mobile Automation</span><span class="ti">API Testing</span><span class="ti">CI/CD</span><span class="ti">Performance Engineering</span><span class="ti">LiveKit</span><span class="ti">Healthcare QA</span><span class="ti">AI Automation</span><span class="ti">Framework Architecture</span><span class="ti">Agile</span>
+</div></div>
+
+<hr class="dv">
+
+<div id="about" class="fu">
+  <div class="ab">
+    <div class="sl">About</div>
+    <h2 class="sh">The engineer<br>behind the system.</h2>
+    <p>I am a QA automation engineer operating at the intersection of <strong>test engineering and AI-powered quality systems</strong>. My work goes beyond writing tests — I design frameworks that are architecturally sound, scalable under team growth, and maintainable across long product lifecycles.</p>
+    <p>My technical depth spans the full testing pyramid. <em>Web, mobile, API, and performance</em> — I've built automation coverage across all four, integrating tool chains into coherent workflows that connect directly to CI/CD delivery pipelines.</p>
+    <p>I've delivered quality engineering across <strong>healthcare platforms, education products, and health insurance systems</strong> — domains where precision matters and failures carry real-world consequences. That context has shaped a discipline-first approach to everything I build.</p>
+    <p>Currently, I'm working on AI automation at a meaningful scale — bringing intelligent, adaptive, and self-aware quality systems into real production pipelines. The next phase of test engineering isn't just faster — it's smarter.</p>
+    <div class="pq"><p><strong>My standard:</strong> A test framework is a production system. It deserves the same engineering rigour as the application it validates — clean architecture, zero tolerance for flake, and output that development teams can trust without question.</p></div>
+  </div>
+  <div class="asd">
+    <div class="ac"><div class="acl">Current Focus</div><div class="acv">AI Automation Engineering<br>at Production Scale</div></div>
+    <div class="ac"><div class="acl">Specialisation</div><div class="acv">Framework Architecture<br>Cross-Platform Test Systems</div></div>
+    <div class="ac"><div class="acl">Domains</div><div class="dts"><span class="dt">Healthcare</span><span class="dt">Education</span><span class="dt">Health Insurance</span></div></div>
+    <div class="ac"><div class="acl">Environment</div><div class="acv">Agile · Scrum · CI/CD</div></div>
+    <div class="ac"><div class="acl">Location</div><div class="acv">Hyderabad, India</div></div>
+    <div class="ac"><div class="acl">Primary Language</div><div class="acv">Python (Proficient)</div></div>
+  </div>
+</div>
+
+<hr class="dv">
+
+<div class="aw" id="vision">
+  <div class="ai fu">
+    <div>
+      <div class="sl">AI Automation</div>
+      <h2 class="sh">Quality that<br>thinks for itself.</h2>
+      <p class="sd" style="margin-bottom:28px;">Traditional QA runs tests. Intelligent QA understands them. I'm building toward automation systems that reason about failure, adapt to change, and surface signal — not noise — to engineering teams.</p>
+      <div class="ap">AI-Powered Quality Engineering</div>
+    </div>
+    <div class="afs">
+      <div class="af"><div class="afi">🧠</div><div><div class="aft">Intelligent Test Execution</div><div class="afd">Automation frameworks designed to prioritise, route, and report with contextual awareness — not just brute-force coverage.</div></div></div>
+      <div class="af"><div class="afi">🔄</div><div><div class="aft">Adaptive & Self-Healing Architecture</div><div class="afd">Frameworks that recover from UI change, detect flaky patterns, and reduce maintenance overhead through intelligent localisation strategies.</div></div></div>
+      <div class="af"><div class="afi">📡</div><div><div class="aft">Scalable Quality Orchestration</div><div class="afd">Parallel execution, CI/CD integration, and structured reporting built to scale across teams, products, and environments simultaneously.</div></div></div>
+      <div class="af"><div class="afi">🎯</div><div><div class="aft">AI-Assisted Test Generation</div><div class="afd">Leveraging generative AI to accelerate coverage, suggest edge cases, and reduce the time between feature delivery and validated quality.</div></div></div>
+    </div>
+  </div>
+</div>
+
+<section id="expertise" class="sec fu">
+  <div class="sl">Technical Expertise</div>
+  <h2 class="sh">Every layer,<br>covered and owned.</h2>
+  <p class="sd">Full-spectrum automation engineering across the complete testing surface.</p>
+  <div class="eg">
+    <div class="ec"><div class="eci">🌐</div><div class="ect">Web Automation</div><div class="ecd">End-to-end UI testing with Selenium and Playwright. Stable locator strategy, Page Object architecture, and execution reliability as a hard requirement.</div><div class="ectools"><span class="ecto">Selenium</span><span class="ecto">Playwright</span><span class="ecto">Python</span></div></div>
+    <div class="ec"><div class="eci">📱</div><div class="ect">Mobile Automation</div><div class="ecd">Native and hybrid app testing on Android and iOS using Appium. Device management, capability configuration, and gesture-based flow coverage.</div><div class="ectools"><span class="ecto">Appium</span><span class="ecto">Android</span><span class="ecto">iOS</span></div></div>
+    <div class="ec"><div class="eci">⚡</div><div class="ect">API Automation</div><div class="ecd">REST API validation using RestAssured — contract testing, schema validation, authentication flows, and chained request coverage.</div><div class="ectools"><span class="ecto">RestAssured</span><span class="ecto">JSON Schema</span><span class="ecto">Auth</span></div></div>
+    <div class="ec"><div class="eci">📊</div><div class="ect">Performance Testing</div><div class="ecd">Load and stress profiling with JMeter and LiveKit. Throughput, latency, and concurrent user validation before production exposure.</div><div class="ectools"><span class="ecto">JMeter</span><span class="ecto">LiveKit</span><span class="ecto">Load Analysis</span></div></div>
+    <div class="ec"><div class="eci">🏗️</div><div class="ect">Framework Architecture</div><div class="ecd">Layered framework design — config, data, helper, and runner separation. Built for teams, not individuals. Reusable and maintainable by design.</div><div class="ectools"><span class="ecto">POM</span><span class="ecto">Data-Driven</span><span class="ecto">Modular</span></div></div>
+    <div class="ec"><div class="eci">🔗</div><div class="ect">CI/CD Integration</div><div class="ecd">Automation wired directly into delivery pipelines — triggered runs, parallel execution, failure triage, and actionable report output.</div><div class="ectools"><span class="ecto">Jenkins</span><span class="ecto">GitHub Actions</span><span class="ecto">Reports</span></div></div>
+  </div>
+</section>
+
+<section id="skills" class="fu">
+  <div class="sl">Skills Matrix</div>
+  <h2 class="sh">Honest ratings.<br>Real capability.</h2>
+  <div class="skc">
+    <div>
+      <div class="skg">Automation & Testing</div>
+      <div class="ski"><div class="skr"><span class="skn">Selenium WebDriver</span><span class="skt">Strong</span></div><div class="skb"><div class="skf fg" data-w="0.88"></div></div></div>
+      <div class="ski"><div class="skr"><span class="skn">Playwright</span><span class="skt">Strong</span></div><div class="skb"><div class="skf fg" data-w="0.85"></div></div></div>
+      <div class="ski"><div class="skr"><span class="skn">Appium</span><span class="skt">Proficient</span></div><div class="skb"><div class="skf fi" data-w="0.78"></div></div></div>
+      <div class="ski"><div class="skr"><span class="skn">RestAssured</span><span class="skt">Proficient</span></div><div class="skb"><div class="skf fi" data-w="0.80"></div></div></div>
+      <div class="ski"><div class="skr"><span class="skn">JMeter</span><span class="skt">Proficient</span></div><div class="skb"><div class="skf fi" data-w="0.75"></div></div></div>
+    </div>
+    <div>
+      <div class="skg">Languages & Ecosystem</div>
+      <div class="ski"><div class="skr"><span class="skn">Python</span><span class="skt">Proficient</span></div><div class="skb"><div class="skf fg" data-w="0.83"></div></div></div>
+      <div class="ski"><div class="skr"><span class="skn">Agile / Scrum</span><span class="skt">Experienced</span></div><div class="skb"><div class="skf fg" data-w="0.87"></div></div></div>
+      <div class="ski"><div class="skr"><span class="skn">JavaScript</span><span class="skt">Beginner</span></div><div class="skb"><div class="skf fd" data-w="0.30"></div></div></div>
+      <div class="ski"><div class="skr"><span class="skn">TypeScript</span><span class="skt">Beginner</span></div><div class="skb"><div class="skf fd" data-w="0.28"></div></div></div>
+      <div class="ski"><div class="skr"><span class="skn">LiveKit Load Testing</span><span class="skt">Familiar</span></div><div class="skb"><div class="skf fd" data-w="0.42"></div></div></div>
+    </div>
+  </div>
+</section>
+
+<hr class="dv">
+
+<div class="mw fu">
+  <div class="mi">
+    <div class="sl">Engineering Impact</div>
+    <h2 class="sh">Coverage that<br>speaks for itself.</h2>
+    <div class="mgrid">
+      <div class="mc"><div class="mn">500<sup>+</sup></div><div class="ml">Web Test Cases<br>Executed & Maintained</div></div>
+      <div class="mc"><div class="mn">500<sup>+</sup></div><div class="ml">Mobile Test Cases<br>Across Android & iOS</div></div>
+      <div class="mc"><div class="mn">100<sup>+</sup></div><div class="ml">API Test Cases<br>Schema & Contract Coverage</div></div>
+      <div class="mc"><div class="mn">3</div><div class="ml">Production Domains<br>Healthcare · Education · Insurance</div></div>
+    </div>
+  </div>
+</div>
+
+<section id="domains" class="sec fu">
+  <div class="sl">Case Studies</div>
+  <h2 class="sh">Real domains.<br>Real stakes.</h2>
+  <p class="sd">Three production environments. Each demanded quality ownership, not just test execution.</p>
+  <div class="dg">
+    <div class="dc">
+      <div class="dn">01 // Healthcare</div>
+      <div class="dt2">Healthcare Platform</div>
+      <div class="ds"><div class="dl lr">Problem</div><div class="dtx">Patient-facing web and mobile features required reliable regression coverage. Manual cycles created release bottlenecks and inconsistency in safety-critical flows.</div></div>
+      <div class="ds"><div class="dl lb">Contribution</div><div class="dtx">Built integrated web and mobile automation with data-driven architecture, parallel execution, and CI/CD pipeline integration. Covered critical patient journey flows end-to-end.</div></div>
+      <div class="ds"><div class="dl lg">Outcome</div><div class="dtx">Regression cycle time cut significantly. Defect detection moved earlier. Release confidence improved with repeatable, automated quality gates.</div></div>
+      <div class="dm"><div class="dmv">~60%</div><div class="dml">Reduction in regression cycle time</div></div>
+    </div>
+    <div class="dc">
+      <div class="dn">02 // Education</div>
+      <div class="dt2">EdTech Platform</div>
+      <div class="ds"><div class="dl lr">Problem</div><div class="dtx">High-volume student-facing app with complex mobile flows, video integrations, and real-time features. Test coverage was fragmented and manual-heavy.</div></div>
+      <div class="ds"><div class="dl lb">Contribution</div><div class="dtx">Delivered Appium-based mobile automation and RestAssured API coverage. Aligned test deliverables with sprint cadence, integrating nightly runs into the CI pipeline.</div></div>
+      <div class="ds"><div class="dl lg">Outcome</div><div class="dtx">Automation coverage expanded significantly without proportional manual effort. API defects surfaced pre-deployment. Execution became a reliable part of every sprint.</div></div>
+      <div class="dm"><div class="dmv">3×</div><div class="dml">Coverage increase vs. prior manual approach</div></div>
+    </div>
+    <div class="dc">
+      <div class="dn">03 // Health Insurance</div>
+      <div class="dt2">Insurance Systems</div>
+      <div class="ds"><div class="dl lr">Problem</div><div class="dtx">Deep business logic in claims, policy processing, and document flows required both correctness validation and load-behaviour confirmation at scale.</div></div>
+      <div class="ds"><div class="dl lb">Contribution</div><div class="dtx">Designed end-to-end functional test coverage. Built JMeter load plans for concurrent user validation. Led RCA documentation for intermittent failures in critical claim flows.</div></div>
+      <div class="ds"><div class="dl lg">Outcome</div><div class="dtx">Critical business logic defects caught pre-production. Load behaviour informed infrastructure scaling. RCA findings reduced mean time to resolution across the team.</div></div>
+      <div class="dm"><div class="dmv">Critical</div><div class="dml">Pre-production defect interception rate</div></div>
+    </div>
+  </div>
+</section>
+
+<hr class="dv">
+
+<div class="cpw fu">
+  <div class="cpi">
+    <div class="sl">What I Bring</div>
+    <h2 class="sh">Leadership-grade<br>capabilities.</h2>
+    <div class="cpg">
+      <div class="cpc"><div class="cpi2">🏛️</div><div class="cpt">Framework Architecture</div><div class="cpd">Design test systems that teams inherit without friction — not just scripts that run.</div></div>
+      <div class="cpc"><div class="cpi2">🧠</div><div class="cpt">AI Quality Thinking</div><div class="cpd">Bringing intelligence into automation — adaptive execution, AI-assisted coverage, smart triage.</div></div>
+      <div class="cpc"><div class="cpi2">🎯</div><div class="cpt">Quality Ownership</div><div class="cpd">End-to-end accountability. Coverage decisions, defect analysis, and release confidence — owned.</div></div>
+      <div class="cpc"><div class="cpi2">🔍</div><div class="cpt">Root Cause Analysis</div><div class="cpd">Systematic debugging. Trace the failure, isolate the cause, document the fix. No ambiguity.</div></div>
+      <div class="cpc"><div class="cpi2">📡</div><div class="cpt">Full-Stack Coverage</div><div class="cpd">UI, API, mobile, performance — the complete testing surface, integrated and coherent.</div></div>
+      <div class="cpc"><div class="cpi2">⚙️</div><div class="cpt">CI/CD Engineering</div><div class="cpd">Automation as a delivery pipeline component. Test gates, parallel runs, structured reporting.</div></div>
+      <div class="cpc"><div class="cpi2">🤝</div><div class="cpt">Agile Collaboration</div><div class="cpd">Aligned to sprint goals. Test deliverables timed to release cadence. Zero friction.</div></div>
+      <div class="cpc"><div class="cpi2">📐</div><div class="cpt">Engineering Discipline</div><div class="cpd">Clean, maintainable, documented. Test code treated as a production asset.</div></div>
+    </div>
+  </div>
+</div>
+
+<section id="contact" class="fu">
+  <div class="sl">Contact</div>
+  <div class="ctg">
+    <div>
+      <h2 class="ch"><em>Let's build something</em>WORTH<br>TRUSTING.</h2>
+      <p class="csub">If you're scaling a QA engineering function, evaluating AI automation strategy, or looking for someone who treats quality as a first-class engineering discipline — let's talk.</p>
+      <a href="https://github.com/" target="_blank" class="cl" id="ghLink"><div class="cli clgh"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg></div><div class="clt"><span class="clc">GitHub</span><span class="cln">https://github.com/SrinivasBandi1</span></div></a>
+      <a href="https://linkedin.com/" target="_blank" class="cl" id="liLink"><div class="cli clli"><svg width="16" height="16" viewBox="0 0 24 24" fill="#0077B5"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></div><div class="clt"><span class="clc">LinkedIn</span><span class="cln">www.linkedin.com/in/srinivasbandi1
+
+</span></div></a>
+      <a href="mailto:bandisrinivas765@gmail.com" class="cl"><div class="cli clem">✉️</div><div class="clt"><span class="clc">Email</span><span class="cln">bandisrinivas765@gmail.com</span></div></a>
+    </div>
+    <div class="fs">
+      <div id="fSu" class="fsu"><div class="fsi">✅</div><div class="fst">Message Sent.</div><div class="fss">I'll respond within 24 hours.</div></div>
+      <form id="cForm">
+        <div id="fEr" class="fe">Something went wrong — your email client will open as a fallback.</div>
+        <div class="fr">
+          <div class="fg2"><label class="fl2" for="fn">Name</label><input class="fi2" type="text" id="fn" placeholder="Your name" autocomplete="name"><span class="em" id="fnE"></span></div>
+          <div class="fg2"><label class="fl2" for="fe2">Email</label><input class="fi2" type="email" id="fe2" placeholder="you@company.com" autocomplete="email"><span class="em" id="feE"></span></div>
+        </div>
+        <div class="fg2"><label class="fl2" for="fsu2">Subject</label><input class="fi2" type="text" id="fsu2" placeholder="What's this about?"><span class="em" id="fsE"></span></div>
+        <div class="fg2"><label class="fl2" for="fm">Message</label><textarea class="ft2" id="fm" placeholder="Tell me about the opportunity or what you're looking for..."></textarea><span class="em" id="fmE"></span></div>
+        <button type="submit" class="bs" id="sBtn">Send Message</button>
+      </form>
+    </div>
+  </div>
+</section>
+<footer>
+  <div class="ftb">SRINIVAS BANDI</div>
+  <div class="ftlinks"><a href="#hero" class="ftl">Top</a><a href="#about" class="ftl">About</a><a href="#vision" class="ftl">AI Vision</a><a href="#contact" class="ftl">Contact</a></div>
+  <div class="ftc">© 2024 — Engineered with discipline</div>
+</footer>
+
+<script>
+const cur=document.getElementById('cur'),cur2=document.getElementById('cur2');
+let mx=0,my=0,cx=0,cy=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px';});
+function ac(){cx+=(mx-cx)*.15;cy+=(my-cy)*.15;cur2.style.left=cx+'px';cur2.style.top=cy+'px';requestAnimationFrame(ac);}ac();
+document.querySelectorAll('a,button').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{cur.style.transform='translate(-50%,-50%) scale(2)';cur2.style.transform='translate(-50%,-50%) scale(1.4)';});
+  el.addEventListener('mouseleave',()=>{cur.style.transform='translate(-50%,-50%) scale(1)';cur2.style.transform='translate(-50%,-50%) scale(1)';});
+});
+window.addEventListener('scroll',()=>{document.getElementById('mn').classList.toggle('sc',window.scrollY>60);});
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.classList.add('in');
+      e.target.querySelectorAll('.skf').forEach(b=>{
+        const w=b.getAttribute('data-w');
+        setTimeout(()=>{b.style.transform=`scaleX(${w})`;},200);
+      });
+    }
+  });
+},{threshold:0.08});
+document.querySelectorAll('.fu').forEach(el=>obs.observe(el));
+const form=document.getElementById('cForm');
+const sSucc=document.getElementById('fSu');
+const sErr=document.getElementById('fEr');
+const sBtn=document.getElementById('sBtn');
+function vld(){
+  let ok=true;
+  const set=(eid,iid,msg)=>{document.getElementById(eid).textContent=msg;document.getElementById(iid).classList.toggle('er',!!msg);if(msg)ok=false;};
+  const n=document.getElementById('fn').value.trim();
+  const e=document.getElementById('fe2').value.trim();
+  const s=document.getElementById('fsu2').value.trim();
+  const m=document.getElementById('fm').value.trim();
+  set('fnE','fn',n?'':'Name is required.');
+  set('feE','fe2',!e?'Email is required.':/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e)?'':'Invalid email.');
+  set('fsE','fsu2',s?'':'Subject is required.');
+  set('fmE','fm',m.length>=10?'':'Minimum 10 characters.');
+  return ok;
+}
+form.addEventListener('submit',async ev=>{
+  ev.preventDefault();
+  if(!vld())return;
+  sBtn.disabled=true;sBtn.textContent='Sending...';sErr.classList.remove('sh2');
+  const n=document.getElementById('fn').value.trim();
+  const e=document.getElementById('fe2').value.trim();
+  const s=document.getElementById('fsu2').value.trim();
+  const m=document.getElementById('fm').value.trim();
+  try{
+    const r=await fetch('https://formspree.io/f/mjgpnwqv',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify({name:n,email:e,subject:s,message:m,_replyto:e})});
+    if(r.ok){form.style.display='none';sSucc.classList.add('sh2');}else throw new Error();
+  }catch{
+    window.location.href=`mailto:bandisrinivas765@gmail.com?subject=${encodeURIComponent(s)}&body=${encodeURIComponent('From: '+n+' <'+e+'>\n\n'+m)}`;
+    sErr.classList.add('sh2');sBtn.disabled=false;sBtn.textContent='Send Message';
+  }
+});
+</script>
+</body>
+</html>
